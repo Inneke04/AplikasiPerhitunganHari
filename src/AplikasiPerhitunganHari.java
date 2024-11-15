@@ -5,6 +5,7 @@
  */
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.Date;
@@ -101,19 +102,19 @@ public class AplikasiPerhitunganHari extends javax.swing.JFrame {
                             .addComponent(jComboBox1, 0, 204, Short.MAX_VALUE)
                             .addComponent(jSpinner1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(22, 22, 22)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +196,9 @@ public class AplikasiPerhitunganHari extends javax.swing.JFrame {
         long millisecDiff = Math.abs(akhir.getTime() - awal.getTime());
         long jarakHari = TimeUnit.DAYS.convert(millisecDiff, TimeUnit.MILLISECONDS);
         
-        String a = "Jumlah Hari pada " + bulan + " " + tahun + " adalah " + jumlahHari,
+        boolean isLeapYear = Year.isLeap(tahun);
+       
+        String a = "Jumlah Hari pada " + bulan + " " + tahun + " adalah " + jumlahHari+ (isLeapYear ? " (Tahun Kabisat)" : ""),
             b = "Hari Pertama : " + ubahHari(hariPertama.getDayOfWeek()), 
             c = "Hari Terakhir : " + ubahHari(hariTerakhir.getDayOfWeek()),
             d = "Jarak Hari : " + jarakHari;
